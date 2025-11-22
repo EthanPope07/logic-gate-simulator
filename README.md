@@ -1,73 +1,120 @@
-# React + TypeScript + Vite
+# Logic Gate Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web-based logic gate simulator developed for practicing digital logic concepts for my ECE306 final exam.
 
-Currently, two official plugins are available:
+![Logic Gate Simulator](https://img.shields.io/badge/status-active-success.svg)
+![Built with React](https://img.shields.io/badge/React-19.2.0-blue.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Purpose
 
-## React Compiler
+This simulator was created to help me study and practice logic gate circuits for my ECE306 (Introduction to Computing) final exam. It provides a hands-on, visual way to build and test digital logic circuits.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+### Core Functionality
+- **Drag-and-Drop Interface**: Easily place gates on the canvas
+- **Logic Gates**: AND, OR, NOT, XOR, NAND, NOR, XNOR
+- **Input/Output Nodes**: Interactive inputs and visual outputs
+- **Wire Connections**: Connect gates with visual wiring
+- **Real-time Simulation**: See logic propagate through your circuit instantly
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Advanced Features
+- **Clock/Pulse Generator**: Build sequential circuits with adjustable clock speed (100-2000ms)
+- **Custom ICs**: Create reusable components from circuit sections
+- **Truth Table Generator**: Automatically generate truth tables for your circuits
+- **Undo/Redo**: Full history support with keyboard shortcuts (Ctrl+Z/Ctrl+Y)
+- **Save/Load**: Save circuits as JSON files and reload them later
+- **Wire Styles**: Toggle between curved (Bezier) and angled (orthogonal) wires
+- **Grid Snap**: Automatic 20px grid alignment for clean circuits
+- **Multi-Selection**: Shift+Click to select multiple nodes
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### UI Modes
+- **Base 3 Mode**: Limit to fundamental gates (AND, OR, NOT) for exam practice
+- **All Gates Mode**: Access all available logic gates
+- **Pause Simulation**: Freeze circuit state for analysis
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/logic-gate-simulator.git
+cd logic-gate-simulator
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+## 📖 How to Use
+
+1. **Select a Mode**: Choose "Base 3" for exam practice or "All Gates" for full functionality
+2. **Add Gates**: Drag gates from the sidebar onto the canvas
+3. **Connect Wires**: Click an output pin, then click an input pin to create a wire
+4. **Toggle Inputs**: Click INPUT nodes to toggle between 0 and 1
+5. **Create ICs**: Shift+Click to select multiple nodes, then click "Create IC" to make reusable components
+6. **Generate Truth Tables**: Click "Table" to see the truth table for your circuit
+7. **Adjust Clock Speed**: Use the slider to control clock pulse frequency
+
+### Keyboard Shortcuts
+- **Ctrl+Z**: Undo
+- **Ctrl+Y**: Redo
+- **Shift+Click**: Multi-select nodes
+- **Delete/Backspace**: Delete selected node
+
+## 🛠️ Technology Stack
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **CSS Variables** - Theming and styling
+
+## 🎓 Educational Value
+
+This simulator helps with:
+- Understanding Boolean logic and gate operations
+- Visualizing circuit behavior and signal propagation
+- Building complex circuits from simple gates
+- Practicing for exams with truth table verification
+- Experimenting with sequential logic using clock signals
+
+## 🔮 Future Enhancements
+
+Planned features for future development:
+- **Multiplexers (MUX)** and Demultiplexers (DEMUX)
+- **Encoders** and Decoders
+- **Flip-Flops** (SR, D, JK, T)
+- **Registers** and Counters
+- **7-Segment Display** output
+- **Timing Diagrams** for signal visualization
+- **Circuit Templates** for common patterns
+- **Export to Verilog/VHDL**
+- **Zoom and Pan** for large circuits
+
+## 📝 License
+
+This project is open source and available for educational purposes.
+
+## 🙏 Acknowledgments
+
+Developed as a study tool for ECE306 - Introduction to Computing at UT Austin.
+
+---
+
+**Note**: This is an educational tool and may not reflect all real-world circuit behaviors. Always verify critical designs with professional tools.
