@@ -1,0 +1,256 @@
+.canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wires-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Wire paths need pointer events */
+.wires-layer path {
+    pointer-events: stroke;
+}
+
+.gate-node {
+    position: absolute;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    min-width: 80px;
+    box-shadow: var(--shadow-md);
+    user-select: none;
+    cursor: grab;
+    z-index: 10;
+}
+
+.gate-node:active {
+    cursor: grabbing;
+}
+
+.gate-header {
+    padding: 4px 8px;
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.gate-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    position: relative;
+}
+
+.gate-inputs,
+.gate-outputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 4px;
+    /* Space for pins to stick out slightly if we wanted, but keeping inside for now */
+}
+
+.pin {
+    width: 12px;
+    height: 12px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    cursor: crosshair;
+    transition: all 0.2s;
+    border: 2px solid var(--bg-panel);
+}
+
+.pin:hover {
+    background: var(--text-primary);
+    transform: scale(1.2);
+}
+
+.input-pin {
+    margin-left: -6px;
+    /* Pull out to the left */
+}
+
+.output-pin {
+    margin-right: -6px;
+    /* Pull out to the right */
+}
+
+.status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--wire-off);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.status-indicator.on {
+    background: var(--wire-on);
+    box-shadow: 0 0 8px var(--wire-on);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+    background: var(--bg-panel);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Truth Table Styles */
+.table-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.truth-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.truth-table th,
+.truth-table td {
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.truth-table th {
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+/* Group Headers */
+.group-header {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.input-group {
+    color: var(--accent-blue);
+    border-bottom-color: rgba(59, 130, 246, 0.3);
+}
+
+.output-group {
+    color: var(--accent-green);
+    border-bottom-color: rgba(34, 197, 94, 0.3);
+}
+
+.col-header {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    top: 37px;
+    /* Height of first header row */
+}
+
+.separator,
+.separator-header {
+    width: 1px;
+    padding: 0;
+    background: var(--border-color);
+}
+
+.truth-table tbody tr {
+    transition: background 0.1s;
+}
+
+.truth-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.val-0 {
+    color: var(--text-secondary);
+    opacity: 0.4;
+}
+
+.val-1 {
+    color: var(--text-primary);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}

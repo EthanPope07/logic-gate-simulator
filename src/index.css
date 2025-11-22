@@ -1,0 +1,85 @@
+:root {
+  /* Premium Dark Theme Palette */
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --bg-canvas: #0b1120;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Accents */
+  --accent-primary: #3b82f6; /* Blue */
+  --accent-glow: rgba(59, 130, 246, 0.5);
+  --accent-success: #10b981;
+  --accent-danger: #ef4444;
+  --accent-warning: #f59e0b;
+
+  /* Gate Colors */
+  --gate-and: #ef4444;
+  --gate-or: #3b82f6;
+  --gate-not: #eab308;
+  --gate-xor: #a855f7;
+  
+  /* Wire States */
+  --wire-off: #334155;
+  --wire-on: #10b981;
+  --wire-selected: #f59e0b;
+
+  /* UI Elements */
+  --border-color: #334155;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 15px var(--accent-glow);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow: hidden; /* App-like feel */
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+/* Utility Classes */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+}
+
+.btn {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
